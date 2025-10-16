@@ -653,7 +653,7 @@ export default function Navbar() {
               </h2>
 
               <select
-                className="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-[#dc3545] outline-none"
+                className="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-[#dc3545] outline-none text-gray-700"
                 defaultValue=""
               >
                 <option value="">Select Area / Sub Region</option>
@@ -674,6 +674,46 @@ export default function Navbar() {
           </div>
         </>
       )}
+
+      {/* ✅ Search Popup */}
+{isSearchOpen && (
+  <>
+    <div
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+      onClick={() => setSearchOpen(false)}
+    ></div>
+
+    <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+        <button
+          onClick={() => setSearchOpen(false)}
+          className="absolute top-2 right-3 text-2xl text-gray-500 hover:text-[#dc3545]"
+        >
+          &times;
+        </button>
+
+        <h2 className="text-lg font-bold mb-4 text-gray-800 text-center">
+          Search Products
+        </h2>
+
+        <input
+          type="text"
+          placeholder="Search for products..."
+          className="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-[#dc3545] outline-none text-gray-700"
+        />
+
+        <button
+          onClick={() => setSearchOpen(false)}
+          className="mt-4 w-full bg-[#dc3545] text-white font-semibold py-2 rounded-full hover:bg-[#b92c3a] transition-colors"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </>
+)}
+
     </>
+
   );
 }
